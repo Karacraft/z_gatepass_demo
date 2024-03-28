@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='FINBOX')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="Z_C_GPHEADER_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Draft Created On"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Draft Last Changed On"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Draft Last Changed By"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Draft Access Type"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft In Process Since"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Draft In Process By"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Is Kept By User"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Locked Since"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Created By Me"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Last Changed By Me"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft In Process By Me"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Created By (Description)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Last Changed By (Description)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft In Process By (Description)"/>
+            </EntityType>
+            <EntityType Name="Z_C_GPHEADERType" sap:label="Gatepass Header Conumption View" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="HeaderId"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Activation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HeaderId" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Gatepass ID" sap:quickinfo="Header ID for ZGatepasss" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreatedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Date Field For Gatepas"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="CreatedTime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="CreatorPersno" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="CreatorName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Server name" sap:quickinfo="Server Name"/>
+                <Property Name="CreatorWerks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="CreatorKostl" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/>
+                <Property Name="CreatorCct" Type="Edm.String" MaxLength="20" sap:label="Name" sap:quickinfo="General Name"/>
+                <Property Name="CreatorGsber" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Area"/>
+                <Property Name="CreatorGsbert" Type="Edm.String" MaxLength="30" sap:label="Business area" sap:quickinfo="Business area description"/>
+                <Property Name="OutOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Date Field For Gatepas"/>
+                <Property Name="OutBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="OutTime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="OutVehicle" Type="Edm.String" MaxLength="10"/>
+                <Property Name="OutDriver" Type="Edm.String" MaxLength="30"/>
+                <Property Name="OutResponsible" Type="Edm.String" MaxLength="30"/>
+                <Property Name="OutRemarks" Type="Edm.String" MaxLength="100"/>
+                <Property Name="LastChangedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Current Date" sap:quickinfo="System Date"/>
+                <Property Name="LastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="LastChangedTime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="DeletedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Date Field For Gatepas"/>
+                <Property Name="DeletedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="DeletedTime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="MgrPersno" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="MgrName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Server name" sap:quickinfo="Server Name"/>
+                <Property Name="HodPersno" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="HodName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Server name" sap:quickinfo="Server Name"/>
+                <Property Name="GpType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Gatepass Type"/>
+                <Property Name="RetDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Date Field For Gatepas"/>
+                <Property Name="ApprovedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="AutoApproved" Type="Edm.String" MaxLength="1"/>
+                <Property Name="Purpose" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Destination" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DestinationType" Type="Edm.String" MaxLength="8"/>
+                <Property Name="DestPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="DestIndate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Date Field For Gatepas"/>
+                <Property Name="DestInby" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="DestIntime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="DestReceived" Type="Edm.String" MaxLength="1"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Status Field for Gatepass System"/>
+                <Property Name="InDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Date Field For Gatepas"/>
+                <Property Name="InTime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="InBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="InVehicle" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InDriver" Type="Edm.String" MaxLength="30"/>
+                <Property Name="InResponsible" Type="Edm.String" MaxLength="30"/>
+                <Property Name="InRemarks" Type="Edm.String" MaxLength="100"/>
+                <Property Name="InDestination" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Deleted" Type="Edm.String" MaxLength="1" sap:label="Delete" sap:quickinfo="Delete X for Gatepass"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="Z_C_GPHEADER_CDS.assoc_FE2107A8B4BD8B4B2AB495BFF1041428" FromRole="FromRole_assoc_FE2107A8B4BD8B4B2AB495BFF1041428" ToRole="ToRole_assoc_FE2107A8B4BD8B4B2AB495BFF1041428"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="Z_C_GPHEADER_CDS.assoc_92DB025E8508E827C8398085721EF51C" FromRole="FromRole_assoc_92DB025E8508E827C8398085721EF51C" ToRole="ToRole_assoc_92DB025E8508E827C8398085721EF51C"/>
+                <NavigationProperty Name="to_items" Relationship="Z_C_GPHEADER_CDS.assoc_8E9ABE2C88C8BCB066BFAE294D388BC3" FromRole="FromRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3" ToRole="ToRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3"/>
+            </EntityType>
+            <EntityType Name="Z_C_GPITEMSType" sap:label="Gatepass Line Items Conusmption View" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="HeaderId"/>
+                    <PropertyRef Name="ItemId"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HeaderId" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Gatepass ID" sap:quickinfo="Header ID for ZGatepasss" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ItemId" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Material Doc.Item" sap:quickinfo="Item in Material Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ItemType" Type="Edm.String" MaxLength="1"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Anln2" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sub-number" sap:quickinfo="Asset Subnumber"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Meins" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Status Field for Gatepass System"/>
+                <Property Name="RemarksOut" Type="Edm.String" MaxLength="100"/>
+                <Property Name="MeinsOut" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="RemarksIn" Type="Edm.String" MaxLength="100"/>
+                <Property Name="MeinsIn" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="CreatedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Date Field For Gatepas"/>
+                <Property Name="CreatorPersno" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="LastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Date Field For Gatepas"/>
+                <Property Name="LastChangeTime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+                <Property Name="Dcnumber" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Deleted" Type="Edm.String" MaxLength="1" sap:label="Delete" sap:quickinfo="Delete X for Gatepass"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_header" Relationship="Z_C_GPHEADER_CDS.assoc_8E9ABE2C88C8BCB066BFAE294D388BC3" FromRole="ToRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3" ToRole="FromRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="Z_C_GPHEADER_CDS.assoc_7ED9E70734B3608F68D6EA787D28BD7A" FromRole="FromRole_assoc_7ED9E70734B3608F68D6EA787D28BD7A" ToRole="ToRole_assoc_7ED9E70734B3608F68D6EA787D28BD7A"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="Z_C_GPHEADER_CDS.assoc_DC36831F2754CA27F414145DA9F563A7" FromRole="FromRole_assoc_DC36831F2754CA27F414145DA9F563A7" ToRole="ToRole_assoc_DC36831F2754CA27F414145DA9F563A7"/>
+            </EntityType>
+            <ComplexType Name="ValidationFunctionResult">
+                <Property Name="IsValid" Type="Edm.Boolean" sap:label="Is valid"/>
+            </ComplexType>
+            <Association Name="assoc_92DB025E8508E827C8398085721EF51C" sap:content-version="1">
+                <End Type="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" Multiplicity="1" Role="FromRole_assoc_92DB025E8508E827C8398085721EF51C"/>
+                <End Type="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" Multiplicity="0..1" Role="ToRole_assoc_92DB025E8508E827C8398085721EF51C"/>
+            </Association>
+            <Association Name="assoc_8E9ABE2C88C8BCB066BFAE294D388BC3" sap:content-version="1">
+                <End Type="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" Multiplicity="1" Role="FromRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="Z_C_GPHEADER_CDS.Z_C_GPITEMSType" Multiplicity="*" Role="ToRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3">
+                        <PropertyRef Name="HeaderId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3">
+                        <PropertyRef Name="HeaderId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_FE2107A8B4BD8B4B2AB495BFF1041428" sap:content-version="1">
+                <End Type="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" Multiplicity="1" Role="FromRole_assoc_FE2107A8B4BD8B4B2AB495BFF1041428"/>
+                <End Type="Z_C_GPHEADER_CDS.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_FE2107A8B4BD8B4B2AB495BFF1041428"/>
+            </Association>
+            <Association Name="assoc_7ED9E70734B3608F68D6EA787D28BD7A" sap:content-version="1">
+                <End Type="Z_C_GPHEADER_CDS.Z_C_GPITEMSType" Multiplicity="1" Role="FromRole_assoc_7ED9E70734B3608F68D6EA787D28BD7A"/>
+                <End Type="Z_C_GPHEADER_CDS.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_7ED9E70734B3608F68D6EA787D28BD7A"/>
+            </Association>
+            <Association Name="assoc_DC36831F2754CA27F414145DA9F563A7" sap:content-version="1">
+                <End Type="Z_C_GPHEADER_CDS.Z_C_GPITEMSType" Multiplicity="1" Role="FromRole_assoc_DC36831F2754CA27F414145DA9F563A7"/>
+                <End Type="Z_C_GPHEADER_CDS.Z_C_GPITEMSType" Multiplicity="0..1" Role="ToRole_assoc_DC36831F2754CA27F414145DA9F563A7"/>
+            </Association>
+            <EntityContainer Name="Z_C_GPHEADER_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="Z_C_GPHEADER_CDS.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_C_GPHEADER" EntityType="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_C_GPITEMS" EntityType="Z_C_GPHEADER_CDS.Z_C_GPITEMSType" sap:content-version="1"/>
+                <AssociationSet Name="assoc_8E9ABE2C88C8BCB066BFAE294D388BC3" Association="Z_C_GPHEADER_CDS.assoc_8E9ABE2C88C8BCB066BFAE294D388BC3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_GPHEADER" Role="FromRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3"/>
+                    <End EntitySet="Z_C_GPITEMS" Role="ToRole_assoc_8E9ABE2C88C8BCB066BFAE294D388BC3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7ED9E70734B3608F68D6EA787D28BD7A" Association="Z_C_GPHEADER_CDS.assoc_7ED9E70734B3608F68D6EA787D28BD7A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_GPITEMS" Role="FromRole_assoc_7ED9E70734B3608F68D6EA787D28BD7A"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_7ED9E70734B3608F68D6EA787D28BD7A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_DC36831F2754CA27F414145DA9F563A7" Association="Z_C_GPHEADER_CDS.assoc_DC36831F2754CA27F414145DA9F563A7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_GPITEMS" Role="FromRole_assoc_DC36831F2754CA27F414145DA9F563A7"/>
+                    <End EntitySet="Z_C_GPITEMS" Role="ToRole_assoc_DC36831F2754CA27F414145DA9F563A7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_92DB025E8508E827C8398085721EF51C" Association="Z_C_GPHEADER_CDS.assoc_92DB025E8508E827C8398085721EF51C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_GPHEADER" Role="FromRole_assoc_92DB025E8508E827C8398085721EF51C"/>
+                    <End EntitySet="Z_C_GPHEADER" Role="ToRole_assoc_92DB025E8508E827C8398085721EF51C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_FE2107A8B4BD8B4B2AB495BFF1041428" Association="Z_C_GPHEADER_CDS.assoc_FE2107A8B4BD8B4B2AB495BFF1041428" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_GPHEADER" Role="FromRole_assoc_FE2107A8B4BD8B4B2AB495BFF1041428"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_FE2107A8B4BD8B4B2AB495BFF1041428"/>
+                </AssociationSet>
+                <FunctionImport Name="Z_C_GPHEADERActivation" ReturnType="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" EntitySet="Z_C_GPHEADER" m:HttpMethod="POST" sap:action-for="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" sap:applicable-path="Activation_ac">
+                    <Parameter Name="HeaderId" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Gatepass ID"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="Z_C_GPHEADEREdit" ReturnType="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" EntitySet="Z_C_GPHEADER" m:HttpMethod="POST" sap:action-for="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" sap:applicable-path="Edit_ac">
+                    <Parameter Name="HeaderId" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Gatepass ID"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="TRUE"/>
+                </FunctionImport>
+                <FunctionImport Name="Z_C_GPHEADERPreparation" ReturnType="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" EntitySet="Z_C_GPHEADER" m:HttpMethod="POST" sap:action-for="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="HeaderId" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Gatepass ID"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
+                </FunctionImport>
+                <FunctionImport Name="Z_C_GPHEADERValidation" ReturnType="Z_C_GPHEADER_CDS.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="HeaderId" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Gatepass ID"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
+                </FunctionImport>
+                <FunctionImport Name="Z_C_GPITEMSPreparation" ReturnType="Z_C_GPHEADER_CDS.Z_C_GPITEMSType" EntitySet="Z_C_GPITEMS" m:HttpMethod="POST" sap:action-for="Z_C_GPHEADER_CDS.Z_C_GPITEMSType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="HeaderId" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Gatepass ID"/>
+                    <Parameter Name="ItemId" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Material Doc.Item"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
+                </FunctionImport>
+                <FunctionImport Name="Z_C_GPITEMSValidation" ReturnType="Z_C_GPHEADER_CDS.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="Z_C_GPHEADER_CDS.Z_C_GPITEMSType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="HeaderId" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Gatepass ID"/>
+                    <Parameter Name="ItemId" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Material Doc.Item"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/Z_C_GPHEADER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/Z_C_GPHEADERActivation"/>
+                        <PropertyValue Property="EditAction" String="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/Z_C_GPHEADEREdit"/>
+                        <PropertyValue Property="PreparationAction" String="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/Z_C_GPHEADERPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/Z_C_GPHEADERValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Activation_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_items"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Activation_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/Z_C_GPITEMS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/Z_C_GPITEMSPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/Z_C_GPITEMSValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/Z_C_GPHEADER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_header"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPHEADERType/to_items" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPITEMSType/Anln2" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPITEMSType/Description" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPITEMSType/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPITEMSType/Meins" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPHEADER_CDS_Entities/I_DraftAdministrativeData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPHEADERType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>HeaderId</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="Z_C_GPHEADER_CDS.Z_C_GPITEMSType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>ItemId</PropertyPath>
+                        <PropertyPath>HeaderId</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://192.168.10.45:8000/sap/opu/odata/sap/Z_C_GPHEADER_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://192.168.10.45:8000/sap/opu/odata/sap/Z_C_GPHEADER_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
