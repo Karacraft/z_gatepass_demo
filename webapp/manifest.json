@@ -121,7 +121,7 @@
       "flexibleColumnLayout": {
         "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
         "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
-    }
+      }
     },
     "pages": {
       "ListReport|Z_C_GPHEADER": {
@@ -146,16 +146,6 @@
             "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
             "component": {
               "name": "sap.suite.ui.generic.template.ObjectPage"
-            },
-            "pages": {
-              "ObjectPage|to_items": {
-                "navigationProperty": "to_items",
-                "entitySet": "Z_C_GPITEMS",
-                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
-                "component": {
-                  "name": "sap.suite.ui.generic.template.ObjectPage"
-                }
-              }
             }
           }
         }
